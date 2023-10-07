@@ -1,0 +1,13 @@
+/* mat-sidenav {
+    width: 200px;
+} */
+
+  .example-sidenav {
+    padding: 100px;
+  }
+
+
+.mat-drawer-container {
+    background-color: transparent;
+    height: 100%;
+}

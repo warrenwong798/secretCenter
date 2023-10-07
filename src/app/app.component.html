@@ -313,20 +313,29 @@
 
 <body>
 
+  
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Welcome to Secret Center</span>
-    <div class="spacer"></div>
-    <button mat-raised-button color="primary">Login</button>
-    <button mat-raised-button color="accent">Logout</button>
-</div>
+
+
+<mat-drawer-container autosize>
+  <div class="toolbar" role="banner">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Welcome to Secret Center</span>
+      <div class="spacer"></div>
+      <app-login/>
+  </div>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-side-nav/>
+  </mat-drawer>
+
 
 <div class="content" role="main">
 
-  <!-- Highlight Card -->
+  
+
+    <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
     <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
@@ -340,7 +349,7 @@
       </g>
     </svg>
 
-    <span>{{ title }} app is running!</span>
+    <span>Welcome to Secret Center</span>
 
     <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
       <title>Rocket Ship Smoke</title>
@@ -450,6 +459,10 @@
       </svg>
     </a>
   </div>
+    
+  
+  
+
 
   <!-- Footer -->
   <footer>
@@ -462,6 +475,7 @@
   </svg>
 
 </div>
+</mat-drawer-container>
 </body>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->

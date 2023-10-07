@@ -1,1 +1,6 @@
-<p>login works!</p>
+<span *ngIf="user">
+    Hi, {{user.displayName }}
+</span>
+<button mat-raised-button color="primary" *ngIf="!user" (click)="openDialog(false)">Register</button>
+<button mat-raised-button color="primary" *ngIf="!user" (click)="openDialog(true)">Login</button>
+<button mat-raised-button color="accent" *ngIf="user" (click)="logout()">Logout</button>

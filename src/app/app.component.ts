@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'secretCenter';
+  showNav: boolean = true;
+
+  
 }
