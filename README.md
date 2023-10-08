@@ -9,6 +9,12 @@ Run the following commands to start with docker.
 docker build –t secret-center .
 docker run --name secret-center-container –d –p 4200:4200 secret-center 
 ```
+Navigate to `http://yourhostname:4200/`.
+
+## Local Testing
+
+Run `npm start` to start development server for local testing.
+Navigate to `http://localhost:4200/`.
 
 ## Development server
 
