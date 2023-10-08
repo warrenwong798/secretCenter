@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,5 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class SideNavComponent {
   @Input() showFiller: boolean = true;
+  @Output() changePageEvent = new EventEmitter<string>();
+
+  changePage(value: string) {
+    this.changePageEvent.emit(value);
+  }
+
 
 }

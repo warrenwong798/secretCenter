@@ -12,7 +12,7 @@ import { firebaseApp } from '../app.module';
 
 
 export class LoginComponent {
-  team: string = "";
+  // team: string = "";
   username: string = "";
   email: string = "";
   password: string = "";
@@ -23,12 +23,11 @@ export class LoginComponent {
 
   openDialog(login: boolean): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: {team: this.team, email: this.email, username: this.username, password: this.password, login: login},
+      data: {email: this.email, username: this.username, password: this.password, login: login},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.team = result.team;
       this.username = result.username;
       this.email = result.email;
       this.password = result.password;
@@ -98,7 +97,6 @@ export class LoginComponent {
       this.email = ""
       this.password = ""
       this.username = ""
-      this.team = ""
       this.user = null;
     }).catch((error) => {
       console.log(error);

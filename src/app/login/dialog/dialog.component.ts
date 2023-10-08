@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 export interface LoginData {
-  team: string;
+  // team: string;
   username: string;
   email: string;
   password: string;

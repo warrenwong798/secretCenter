@@ -1,0 +1,7 @@
+mat-list {
+    min-width: 200px;
+}
+
+mat-list-item:hover {
+    background-color: lightgrey;
+}
