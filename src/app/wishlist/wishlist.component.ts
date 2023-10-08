@@ -22,7 +22,7 @@ export class WishlistComponent {
   hide = true;
   hideCenter = true;
   team: string = "";
-  displayedColumns: string[] = ['wishItem', 'comments', 'price'];
+  displayedColumns: string[] = ['wishItem', 'comments'];
   dataSource = rowData;
 
     columnDefs: ColDef[] = [
