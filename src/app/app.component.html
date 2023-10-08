@@ -397,12 +397,14 @@
     
     <div class="card-container-box">
       <mat-card>
-        <mat-card-content>
+        <mat-card-header>
           <mat-card-title-group>
             <mat-card-title>
               Steps to Register:
             </mat-card-title>
           </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
           <p>Please follow the below steps to join a game.</p>
           <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
             <mat-step [stepControl]="firstFormGroup">
@@ -445,15 +447,10 @@
       </mat-card>
     </div>
     
+  </div>
 
-    
-
-
-
-
-
-
-
+  <div *ngIf="page == 'wishlist'">
+    <app-wishlist/>
   </div>
     
   

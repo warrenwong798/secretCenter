@@ -15,6 +15,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatTableModule} from '@angular/material/table';
 
 
 import { AgGridModule } from 'ag-grid-angular';
@@ -68,6 +69,7 @@ export const firebaseApp = initializeApp(firebaseConfig);
     MatCardModule,
     MatStepperModule,
     ReactiveFormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

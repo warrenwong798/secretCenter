@@ -1,6 +1,61 @@
-<ag-grid-angular
-    style="width: 500px; height: 350px;"
-    class="ag-theme-alpine"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs">
-</ag-grid-angular>
+<div class="card-container-box">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>
+                    Game Details
+                </mat-card-title>
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+        
+            <div class="example-container">
+                Your Wish: 
+                <mat-form-field>
+                  <mat-label>Your Wish</mat-label>
+                  <input disabled matInput [type]="hide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                Your Secret Center: 
+                <mat-form-field>
+                    <mat-label>Your Secret Center</mat-label>
+                    <input disabled matInput [type]="hideCenter ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hideCenter = !hideCenter" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCenter">
+                      <mat-icon>{{hideCenter ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+              
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<h3>
+    Your Team: {{team}}
+</h3>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="wishItem">
+      <th mat-header-cell *matHeaderCellDef> Wish Item </th>
+      <td mat-cell *matCellDef="let element"> {{element.wishItem}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="comments">
+      <th mat-header-cell *matHeaderCellDef> Comments </th>
+      <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
