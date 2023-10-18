@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, User } from "firebase/auth";
 import { firebaseApp } from '../app.module';
+import { getFirestore, collection, addDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent {
   password: string = "";
   auth = getAuth(firebaseApp);
   user: User | null = null;
+  db = getFirestore(firebaseApp);
 
   constructor(public dialog: MatDialog) {}
 
@@ -79,7 +81,8 @@ export class LoginComponent {
 
       localStorage.setItem('email', this.email)
       localStorage.setItem('userId', user.uid)
-      localStorage.setItem("username", this.username);
+      if (user.displayName != null)
+        localStorage.setItem("username", user.displayName);
       this.user = user;
     })
     .catch((error) => {
@@ -102,6 +105,18 @@ export class LoginComponent {
       console.log(error);
     });
   }
+
+  // setUpUser() {
+  //   const userRef = doc(this.db, "User", user.uid, this.username);
+  //     await setDoc(gameRef, {
+  //         wish: this.wish,
+  //         comments: this.comments
+  //     }).then((response) => {
+  //       this.success = true;
+  //       console.log(response);
+  //     });
+
+  // }
 
   
 }

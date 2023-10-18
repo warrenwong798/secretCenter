@@ -13,7 +13,7 @@
                 <br/>
                 <mat-form-field>
                     <mat-label>Your Team</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="team">
                 </mat-form-field>
             </p>
             <p>
@@ -21,7 +21,7 @@
                 <br/>
                 <mat-form-field>
                     <mat-label>Price should be below HKD 300.</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="wish">
                 </mat-form-field>
             </p>
             <p>
@@ -29,10 +29,11 @@
                 <br/>
                 <mat-form-field>
                     <mat-label>More details for the gift. e.g. where to purchase.</mat-label>
-                    <textarea matInput></textarea>
+                    <textarea matInput  [(ngModel)]="comments"></textarea>
                 </mat-form-field>
             </p>
-            <button mat-raised-button color="primary">Submit</button>
+            <button mat-raised-button color="primary" (click)="registerPlayer()">Submit</button>
+            <p *ngIf="success">Done!</p>
         </mat-card-content>
     </mat-card>
 </div>
