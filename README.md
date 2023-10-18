@@ -6,8 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run the following commands to start with docker. 
 ```
-docker build –t secret-center .
-docker run --name secret-center-container –d –p 4200:4200 secret-center 
+docker build –t secret-santa .
+docker run --name secret-santa-container –d –p 4200:4200 secret-santa 
 ```
 Navigate to `http://yourhostname:4200/`.
 
