@@ -13,14 +13,14 @@
                 Your Wish: 
                 <mat-form-field>
                   <mat-label>Your Wish</mat-label>
-                  <input disabled matInput [type]="hide ? 'password' : 'text'">
+                  <input disabled matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="wish">
                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                 </mat-form-field>
                 Your Target: 
                 <mat-form-field>
-                    <mat-label>Your Secret Center</mat-label>
+                    <mat-label>Your Target</mat-label>
                     <input disabled matInput [type]="hideCenter ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hideCenter = !hideCenter" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCenter">
                       <mat-icon>{{hideCenter ? 'visibility_off' : 'visibility'}}</mat-icon>

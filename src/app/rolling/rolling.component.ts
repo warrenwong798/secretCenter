@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import firebase from "firebase/compat/app";
 import { firebaseApp } from '../app.module';
-import { getFirestore, collection, addDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, doc, setDoc, updateDoc, getDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-rolling',
@@ -38,7 +38,8 @@ export class RollingComponent {
         return;
       }
         
-      const gameRef = doc(this.db, "Game", this.team, uid, username);
+      const gameRef = doc(this.db, this.team, username);
+      const userRef = doc(this.db, "User", this.team);
       await setDoc(gameRef, {
           wish: this.wish,
           comments: this.comments
@@ -46,6 +47,29 @@ export class RollingComponent {
         this.success = true;
         console.log(response);
       });
+
+      const docSnap = await getDoc(userRef);
+      var data: any[] = [];
+    
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        data = data.concat(docSnap.data()['players']);
+        
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      if (!data.includes(username)){
+        data.push(username);
+        await setDoc(userRef, {
+          players: data
+        }).then((response) => {
+          this.success = true;
+          console.log(response);
+
+        });
+      }
+      
 
       // To update age and favorite color:
       // await updateDoc(gameRef, {
