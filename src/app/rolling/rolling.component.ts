@@ -10,10 +10,11 @@ import { getFirestore, collection, addDoc, doc, setDoc, updateDoc, getDoc } from
 })
 export class RollingComponent {
     db = getFirestore(firebaseApp);
-    team: string = "";
+    team: string = "cprm";
     wish: string = "";
     comments: string = "";
     success: boolean = false;
+    admin: boolean = false;
 
 
     async registerPlayer() {
@@ -39,7 +40,7 @@ export class RollingComponent {
       }
         
       const gameRef = doc(this.db, this.team, username);
-      const userRef = doc(this.db, "User", this.team);
+      
       await setDoc(gameRef, {
           wish: this.wish,
           comments: this.comments
@@ -47,7 +48,8 @@ export class RollingComponent {
         this.success = true;
         console.log(response);
       });
-
+      
+      const userRef = doc(this.db, "User", this.team);
       const docSnap = await getDoc(userRef);
       var data: any[] = [];
     
