@@ -37,3 +37,8 @@
         </mat-card-content>
     </mat-card>
 </div>
+<br>
+<div *ngIf="admin">
+    <button mat-raised-button color="primary" (click)="rolling()" >Roll</button>
+    <button mat-raised-button color="primary" (click)="downloadMatchingResult()" >Download Roll Result</button>
+</div>

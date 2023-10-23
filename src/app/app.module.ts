@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import '@angular/common';
+import { DATE_PIPE_DEFAULT_OPTIONS, DatePipe } from "@angular/common";
 import { BrowserModule } from '@angular/platform-browser';
 import { initializeApp } from "firebase/app";
 
@@ -71,7 +72,11 @@ export const firebaseApp = initializeApp(firebaseConfig);
     ReactiveFormsModule,
     MatTableModule,
   ],
-  providers: [],
+  providers: [{
+    provide: DATE_PIPE_DEFAULT_OPTIONS,
+    useValue: { dateFormat: "YYYY.MM.DD.HH.mm.ss" }
+  },
+  DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
