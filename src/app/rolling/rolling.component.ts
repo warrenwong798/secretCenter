@@ -31,7 +31,7 @@ export class RollingComponent {
       const docSnap = await getDoc(adminRef);
       
       if (docSnap.exists()) {
-        console.log("User data:", docSnap.data());
+        // console.log("User data:", docSnap.data());
 
         if (localStorage.getItem("username") != null && docSnap.data() != null){
           var username = localStorage.getItem("username");
@@ -53,7 +53,7 @@ export class RollingComponent {
       const docSnap = await getDoc(userRef);
       this.notRolled = false;
       if (docSnap.exists()) {
-        console.log("User data:", docSnap.data());
+        // console.log("User data:", docSnap.data());
         const data = docSnap.data()['players'];
         var i = 0;
         var length = 0;
@@ -72,7 +72,7 @@ export class RollingComponent {
           await setDoc(resultRef, {
             targetName: data[targetId]
           }).then((response) => {
-            console.log(response);
+            // console.log(response);
           });
           usedId.push(targetId);
           i++;
@@ -114,7 +114,7 @@ export class RollingComponent {
           comments: this.comments
       }).then((response) => {
         this.success = true;
-        console.log(response);
+        // console.log(response);
       });
       
       const userRef = doc(this.db, "User", this.team);
@@ -122,7 +122,7 @@ export class RollingComponent {
       var data: any[] = [];
     
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        // console.log("Document data:", docSnap.data());
         data = data.concat(docSnap.data()['players']);
         
       } else {
@@ -135,7 +135,7 @@ export class RollingComponent {
           players: data
         }).then((response) => {
           this.success = true;
-          console.log(response);
+          // console.log(response);
 
         });
       }
@@ -154,13 +154,13 @@ export class RollingComponent {
       var data: any[] = [];
       var targetList = [];
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        // console.log("Document data:", docSnap.data());
         data = data.concat(docSnap.data()['players']);
         for (var name of data) {
           const resultRef = doc(this.db, "Result", name);
           const docSnapResult = await getDoc(resultRef);
           if(docSnapResult.exists()) {
-            console.log("Document data:", docSnapResult.data());
+            // console.log("Document data:", docSnapResult.data());
             targetList.push({username: name, targetName: docSnapResult.data()['targetName']});
           }
           else {

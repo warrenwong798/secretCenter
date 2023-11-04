@@ -56,7 +56,7 @@ export class WishlistComponent {
 
     
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      // console.log("Document data:", docSnap.data());
       const data = docSnap.data();
       this.wish = data['wish'];
     } else {
@@ -71,7 +71,7 @@ export class WishlistComponent {
 
   
     if (docSnap.exists()) {
-      console.log("User data:", docSnap.data());
+      // console.log("User data:", docSnap.data());
       const data = docSnap.data()['players'];
       var wishList: WishList[] = [];
       for (var item of data) {
@@ -79,7 +79,7 @@ export class WishlistComponent {
         const wishRef = doc(this.db, "cprm", item);
         const wishSnap = await getDoc(wishRef);
         if (wishSnap.exists()) {
-          console.log("Wish:", wishSnap.data());
+          // console.log("Wish:", wishSnap.data());
           const w = wishSnap.data()
           wishList.push({
             wishItem: w['wish'], comments: w['comments']
@@ -111,7 +111,7 @@ export class WishlistComponent {
 
     
     if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
+      // console.log("Document data:", docSnap.data());
       const data = docSnap.data();
       this.target = data['targetName'];
     } else {

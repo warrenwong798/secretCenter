@@ -33,7 +33,7 @@ export class LoginComponent {
       this.username = result.username;
       this.email = result.email;
       this.password = result.password;
-      console.log(result);
+      // console.log(result);
       if (login) {
         this.login();
       }
