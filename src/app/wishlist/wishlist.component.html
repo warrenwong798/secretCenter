@@ -21,7 +21,7 @@
                 Your Target: 
                 <mat-form-field>
                     <mat-label>Your Target</mat-label>
-                    <input disabled matInput [type]="hideCenter ? 'password' : 'text'">
+                    <input disabled matInput [type]="hideCenter ? 'password' : 'text'" [(ngModel)]="target">
                     <button mat-icon-button matSuffix (click)="hideCenter = !hideCenter" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCenter">
                       <mat-icon>{{hideCenter ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>

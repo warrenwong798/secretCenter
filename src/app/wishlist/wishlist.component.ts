@@ -27,6 +27,7 @@ export class WishlistComponent {
   dataSource: WishList[] = [];
   db = getFirestore(firebaseApp);
   wish: string = "";
+  target: string = "";
 
     columnDefs: ColDef[] = [
         { field: 'wishItem' },
@@ -37,6 +38,7 @@ export class WishlistComponent {
   ngOnInit() {
     this.getWish();
     this.getAllWish();
+    this.getTarget();
   }
 
   async getWish() {
@@ -93,6 +95,28 @@ export class WishlistComponent {
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such user!");
+    }
+  }
+
+  async getTarget() {
+    const username = localStorage.getItem("username");
+    const uid = localStorage.getItem("userId");
+    if (username == null || username == "" || uid == null ){
+      console.log("Please Login");
+      return;
+    }
+        
+    const targetRef = doc(this.db, "Result", username);
+    const docSnap = await getDoc(targetRef);
+
+    
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      const data = docSnap.data();
+      this.target = data['targetName'];
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
     }
   }
     
